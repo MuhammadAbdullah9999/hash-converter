@@ -8,4 +8,20 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
-  
+  /* Hide the sidebar on small screens by default */
+/* Sidebar.css */
+.sidebar {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Custom styles for shadow */
+.shadow-custom {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure the hamburger menu is visible on small screens */
+/* @media (max-width: 600px) {
+  .MuiIconButton-root {
+    color: white;
+  }
+} */
