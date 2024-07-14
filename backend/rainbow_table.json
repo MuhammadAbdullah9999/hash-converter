@@ -1,0 +1,26 @@
+{
+    "5d41402abc4b2a76b9719d911017c592": {
+        "plaintext": "hello",
+        "algorithm": "MD5"
+    },
+    "025e266a9d2418db903343acec730852b0973ebeba72c26ba9f310336315bed15db5f705e628b47efb62ab4ba8fc11079464feffafbeaf6f8e32e93ef28d7b2b": {
+        "plaintext": "yomo",
+        "algorithm": "SHA512"
+    },
+    "816a3f246eac3d6ad086a0c0ca9eadbc": {
+        "plaintext": "njnj",
+        "algorithm": "MD5"
+    },
+    "$2b$12$2G2zX1UxgKMEctp11e/sQesO/k./kwfPEciAOTMcy5n5B4he76Lo2": {
+        "plaintext": "5d41402abc4b2a76b9719d911017c592",
+        "algorithm": "BCRYPT"
+    },
+    "$2b$12$0zFRnxIn3ksCaAI5skvuGOhncj7jhNhj6hQwk2nSeDxiz2he2i/N6": {
+        "plaintext": "hi b",
+        "algorithm": "BCRYPT"
+    },
+    "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824": {
+        "plaintext": "hello",
+        "algorithm": "SHA256"
+    }
+}
