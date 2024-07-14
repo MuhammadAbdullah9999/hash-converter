@@ -15,6 +15,7 @@ import MySQL from "./HashConverters/MySQL";
 import PHPS from "./HashConverters/PHPS";
 import SHACrypt from "./HashConverters/SHA-Crypt"
 import MD5Wordpress from "./HashConverters/MD5 Wordpress"
+import './App.css';
 
 import { useState } from "react";
 

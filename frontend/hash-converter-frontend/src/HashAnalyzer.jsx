@@ -24,28 +24,39 @@ function HashAnalyzer() {
 
   return (
     <div>
-      <h1 className="text-2xl mb-4">Hash Analyzer</h1>
-      <textarea
-        value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
-        placeholder="Enter hash"
-        className="w-full p-2 mb-4 border border-gray-300 rounded"
-      />
-      <div className="flex items-center mb-4">
+     <div className="text-center my-20">
+      <h1 className="text-2xl mb-4 font-bold">Hash Analyzer</h1>
+      <div className="flex justify-center gap-8 mt-12">
+        <textarea
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          placeholder="Enter text"
+          className="w-[40%] h-40 shadow-lg p-2 border border-gray-300 rounded-xl"
+        />
+        <div className="w-[40%] h-40 shadow-lg p-2 border border-gray-300 rounded-xl flex items-center justify-center">
+          {loading ? (
+            <CircularProgress />
+          ) : (
+            <textarea
+              value={outputText}
+              readOnly
+              placeholder="Output will appear here"
+              className="w-full h-full border-none outline-none resize-none"
+            />
+          )}
+        </div>
+      </div>
+      <div className="flex justify-center items-center my-8 gap-4">
         <button
           onClick={handleAnalyze}
-          className="px-4 py-2 bg-blue-500 text-white rounded"
+          className="flex items-center gap-2 px-6 py-2 bg-green-500 text-white rounded-3xl"
           disabled={loading}
         >
-          {loading ? <CircularProgress size={24} /> : "Analyze"}
+          Analyze
         </button>
       </div>
-      <textarea
-        value={outputText}
-        readOnly
-        placeholder="Output will appear here"
-        className="w-full p-2 mt-4 border border-gray-300 rounded"
-      />
+    </div>
+     
     </div>
   );
 }

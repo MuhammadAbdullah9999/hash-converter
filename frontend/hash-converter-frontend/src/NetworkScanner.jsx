@@ -27,22 +27,33 @@ function NetworkScanner() {
   };
 
   return (
-    <div>
-      <h1 className="text-2xl mb-4">Network Scanner</h1>
-      <textarea
-        value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
-        placeholder="Enter target"
-        className="w-full p-2 mb-4 border border-gray-300 rounded"
-      />
-      <div className="flex items-center mb-4">
-        <button
-          onClick={handleScan}
-          className="px-4 py-2 bg-blue-500 text-white rounded"
-          disabled={loading}
-        >
-          {loading ? <CircularProgress size={24} /> : "Scan"}
-        </button>
+    <div className={`relative ${loading ? "pointer-events-none" : ""}`}>
+      <div className="text-center my-20">
+        <h1 className="text-2xl mb-4 font-bold">Network Scanner</h1>
+        <div className="flex justify-center gap-8 mt-12">
+          <textarea
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+            placeholder="Enter text"
+            className="w-[40%] h-40 shadow-lg p-2 border border-gray-300 rounded-xl"
+          />
+        </div>
+        <div className="flex justify-center items-center my-8 gap-4">
+          <button
+            onClick={handleScan}
+            className={`flex items-center gap-2 px-6 py-2 bg-green-500 text-white rounded-3xl ${loading ? "cursor-not-allowed opacity-50" : "hover:bg-green-600 active:bg-green-700"}`}
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <CircularProgress size={20} color="inherit" />
+                Scanning...
+              </>
+            ) : (
+              "Scan Network"
+            )}
+          </button>
+        </div>
       </div>
       {scanResults && (
         <div>
@@ -87,6 +98,7 @@ function NetworkScanner() {
           </table>
         </div>
       )}
+     
     </div>
   );
 }
