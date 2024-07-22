@@ -1,0 +1,61 @@
+version: 2
+services:
+  web:
+    type: web
+    name: hash-analyzer
+    env:
+      - node
+    build:
+      commands:
+        - npm install
+        - npm run build
+    staticPublishPath: build
+    routes:
+      - type: rewrite
+        source: /md5
+        destination: /index.html
+      - type: rewrite
+        source: /sha1
+        destination: /index.html
+      - type: rewrite
+        source: /sha256
+        destination: /index.html
+      - type: rewrite
+        source: /sha512
+        destination: /index.html
+      - type: rewrite
+        source: /bcrypt
+        destination: /index.html
+      - type: rewrite
+        source: /md5phpbb
+        destination: /index.html
+      - type: rewrite
+        source: /md5-crypt
+        destination: /index.html
+      - type: rewrite
+        source: /oracle
+        destination: /index.html
+      - type: rewrite
+        source: /mysql
+        destination: /index.html
+      - type: rewrite
+        source: /phps
+        destination: /index.html
+      - type: rewrite
+        source: /sha-crypt
+        destination: /index.html
+      - type: rewrite
+        source: /md5wordpress
+        destination: /index.html
+      - type: rewrite
+        source: /analyze
+        destination: /index.html
+      - type: rewrite
+        source: /scan
+        destination: /index.html
+      - type: fallback
+        source: /*
+        destination: /index.html
+      - type: rewrite
+        source: /sitemap.xml
+        destination: /sitemap.xml

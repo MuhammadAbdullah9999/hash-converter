@@ -15,6 +15,7 @@ import MySQL from "./HashConverters/MySQL";
 import PHPS from "./HashConverters/PHPS";
 import SHACrypt from "./HashConverters/SHA-Crypt"
 import MD5Wordpress from "./HashConverters/MD5 Wordpress"
+import Blogs from "./Blogs/Blogs";
 import './App.css';
 
 import { useState } from "react";
@@ -30,6 +31,7 @@ function App() {
         </div>
         <div className="flex-1 p-4 md:ml-72">
           <Routes>
+          <Route path="/" element={<MD5Converter />} />
             <Route path="/md5" element={<MD5Converter />} />
             <Route path="/sha1" element={<SHA1Converter />} />
             <Route path="/sha256" element={<SHA256Converter />} />
@@ -46,6 +48,7 @@ function App() {
             {/* Add routes for other hash converters */}
             <Route path="/analyze" element={<HashAnalyzer />} />
             <Route path="/scan" element={<NetworkScanner />} />
+            <Route path="/blogs" element={<Blogs />} />
           </Routes>
         </div>
       </div>

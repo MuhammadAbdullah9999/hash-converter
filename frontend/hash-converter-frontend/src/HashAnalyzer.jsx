@@ -10,7 +10,7 @@ function HashAnalyzer() {
   const handleAnalyze = async () => {
     setLoading(true);
     try {
-      const response = await axios.post(`http://localhost:5000/analyze`, {
+      const response = await axios.post(`https://hash-converter-backend.onrender.com/analyze`, {
         inputText,
       });
       setOutputText(response.data.outputText.join(", "));

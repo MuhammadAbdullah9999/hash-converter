@@ -3,10 +3,14 @@ from flask_cors import CORS
 import hashlib
 import passlib.hash
 import json
+import logging
 import nmap_module  # Import the newly created nmap module
 
 app = Flask(__name__)
 CORS(app)
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
 
 RAINBOW_TABLE_FILE = 'rainbow_table.json'
 
@@ -79,6 +83,16 @@ def analyze_hash(hash_str):
         return potential_algorithms
     else:
         return ['Unknown']
+
+@app.before_request
+def log_request_info():
+    app.logger.info('Headers: %s', request.headers)
+    app.logger.info('Body: %s', request.get_data())
+
+@app.route('/')
+def home():
+    print("working")
+    return jsonify({'message': 'Server is working'})
 
 @app.route('/hash', methods=['POST'])
 def hash_endpoint():

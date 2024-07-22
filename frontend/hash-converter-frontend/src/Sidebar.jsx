@@ -3,10 +3,11 @@ import { List, ListItem, ListItemText, Collapse, ListItemIcon, Drawer, IconButto
 import { ExpandLess, ExpandMore, Lock, Search, NetworkCheck, LockOpen, Menu } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { useTheme, useMediaQuery } from '@mui/material';
+import DescriptionIcon from '@mui/icons-material/Description';
 import './Sidebar.css'; // Import the custom CSS file
 
 const Sidebar = ({ setMode }) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const theme = useTheme();
@@ -71,6 +72,14 @@ const Sidebar = ({ setMode }) => {
               <NetworkCheck style={{ color: 'white' }} />
             </ListItemIcon>
             <ListItemText primary="Network Scanner" />
+          </ListItem>
+        </Link>
+        <Link to="/blogs">
+          <ListItem button onClick={() => handleOptionClick('blogs')} className="mt-2 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+            <ListItemIcon>
+              <DescriptionIcon style={{ color: 'white' }} />
+            </ListItemIcon>
+            <ListItemText primary="Blogs" />
           </ListItem>
         </Link>
       </List>

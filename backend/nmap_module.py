@@ -39,7 +39,11 @@ def scan_target(target):
         return {'error': str(e)}
 
 if __name__ == '__main__':
-    result = domain_to_ip('github.com')
-    print(result)
-    data = scan_target(result)
-    print(data)
+    domain = 'github.com'
+    ip_address = domain_to_ip(domain)
+    if ip_address:
+        print(f"IP address of {domain} is {ip_address}")
+        scan_data = scan_target(ip_address)
+        print(scan_data)
+    else:
+        print(f"Could not resolve domain: {domain}")
