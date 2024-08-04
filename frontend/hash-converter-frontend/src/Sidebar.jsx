@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { List, ListItem, ListItemText, Collapse, ListItemIcon, Drawer, IconButton } from '@mui/material';
+import { List, ListItem, ListItemText, Collapse, ListItemIcon, Drawer, IconButton, Typography } from '@mui/material';
 import { ExpandLess, ExpandMore, Lock, Search, NetworkCheck, LockOpen, Menu } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { useTheme, useMediaQuery } from '@mui/material';
@@ -7,15 +7,20 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import './Sidebar.css'; // Import the custom CSS file
 
 const Sidebar = ({ setMode }) => {
-  const [open, setOpen] = useState(false);
+  const [openEncryption, setOpenEncryption] = useState(false);
+  const [openBlogs, setOpenBlogs] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const handleClick = () => {
-    setOpen(!open);
+  const handleEncryptionClick = () => {
+    setOpenEncryption(!openEncryption);
     setMode('hash');
+  };
+
+  const handleBlogsClick = () => {
+    setOpenBlogs(!openBlogs);
   };
 
   const toggleDrawer = () => {
@@ -33,26 +38,37 @@ const Sidebar = ({ setMode }) => {
     'MD5', 'SHA1', 'SHA256', 'SHA512', 'MySQL', 'MD5 Wordpress', 'MD5 phpBB', 'BCRYPT', 'MD5-Crypt', 'Oracle', 'SHA-Crypt', 'PHPS'
   ];
 
+  const blogLinks = [
+    { title: 'How to Use Burp Suite for scanning websites', path: '/blogs/How to Use Burp Suite for scanning websites' },
+
+  ];
+
   const sidebarContent = (
-    <div className="h-[95%] fixed sidebar w-64 bg-gray-900 text-white shadow-custom rounded-2xl m-4 overflow-auto">
-      <h2 className="text-2xl p-4 font-semibold">Hash Converter</h2>
+    <div className="h-[97%] fixed sidebar w-60 bg-gray-900 text-white shadow-custom rounded-2xl m-2 overflow-auto">
+      <h2 className="text-xl p-4 font-semibold">Hash Converter</h2>
       <List className="px-4">
-        <ListItem button onClick={handleClick} className="flex items-center justify-between hover:bg-gray-700 rounded-lg transition-colors duration-200">
+        <ListItem button onClick={handleEncryptionClick} className="flex items-center justify-between hover:bg-gray-700 rounded-lg transition-colors duration-200">
           <ListItemIcon>
             <LockOpen style={{ color: 'white' }} />
           </ListItemIcon>
           <ListItemText primary="Encryption" />
-          {open ? <ExpandLess style={{ color: 'white' }} /> : <ExpandMore style={{ color: 'white' }} />}
+          {openEncryption ? <ExpandLess style={{ color: 'white' }} /> : <ExpandMore style={{ color: 'white' }} />}
         </ListItem>
-        <Collapse in={open} timeout="auto" unmountOnExit>
+        <Collapse in={openEncryption} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             {hashTypes.map((type) => (
               <Link to={`/${type.toLowerCase().replace(/\s+/g, '')}`} key={type}>
                 <ListItem button className="pl-8 hover:bg-gray-700 rounded-lg transition-colors duration-200" onClick={() => handleOptionClick('hash')}>
                   <ListItemIcon>
-                    <Lock style={{ color: 'white' }} />
+                    <Lock style={{ color: 'white', fontSize: '20px' }} />
                   </ListItemIcon>
-                  <ListItemText primary={type} />
+                  <ListItemText
+                    primary={
+                      <Typography variant="body2" style={{ color: 'white', fontSize: '14px', }}>
+                        {type}
+                      </Typography>
+                    }
+                  />
                 </ListItem>
               </Link>
             ))}
@@ -75,13 +91,35 @@ const Sidebar = ({ setMode }) => {
           </ListItem>
         </Link>
         <Link to="/blogs">
-          <ListItem button onClick={() => handleOptionClick('blogs')} className="mt-2 hover:bg-gray-700 rounded-lg transition-colors duration-200">
-            <ListItemIcon>
-              <DescriptionIcon style={{ color: 'white' }} />
-            </ListItemIcon>
-            <ListItemText primary="Blogs" />
-          </ListItem>
+        <ListItem button onClick={handleBlogsClick} className="mt-2 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+          <ListItemIcon>
+            <DescriptionIcon style={{ color: 'white' }} />
+          </ListItemIcon>
+          <ListItemText primary="Blogs" />
+          {openBlogs ? <ExpandLess style={{ color: 'white' }} /> : <ExpandMore style={{ color: 'white' }} />}
+        </ListItem>
         </Link>
+        <Collapse in={openBlogs} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            {blogLinks.map((blog) => (
+              <Link to={blog.path} key={blog.title}>
+                <ListItem button className=" hover:bg-gray-700 rounded-lg transition-colors duration-200" onClick={() => handleOptionClick('blogs')}>
+                  {/* <ListItemIcon>
+                    <DescriptionIcon style={{ color: 'white', fontSize: '20px' }} />
+                  </ListItemIcon> */}
+                  <p className='text-xs pl-14'>{blog.title}</p>
+                  {/* <ListItemText
+                    primary={
+                      <Typography variant="body2" style={{ color: 'white', fontSize: '14px',paddingLeft:'30px' }}>
+                        {blog.title}
+                      </Typography>
+                    }
+                  /> */}
+                </ListItem>
+              </Link>
+            ))}
+          </List>
+        </Collapse>
       </List>
     </div>
   );
