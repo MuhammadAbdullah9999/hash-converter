@@ -40,6 +40,7 @@ const Sidebar = ({ setMode }) => {
 
   const blogLinks = [
     { title: 'How to Use Burp Suite for scanning websites', path: '/blogs/How to Use Burp Suite for scanning websites' },
+    { title: 'What is OWASP top 10', path: '/blogs/What is OWASP top 10' },
 
   ];
 

@@ -17,6 +17,7 @@ import SHACrypt from "./HashConverters/SHA-Crypt"
 import MD5Wordpress from "./HashConverters/MD5 Wordpress"
 import Blogs from "./Blogs/Blogs";
 import HowToUseBurpSuite from "./Blogs/BurpSuite/HowToUseBurpSuite";
+import OWASPTop10 from "./Blogs/OWASP/owaspTop10";
 import './App.css';
 
 import { useState } from "react";
@@ -51,7 +52,9 @@ function App() {
             <Route path="/scan" element={<NetworkScanner />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogs/How to Use Burp Suite for scanning Websites" element={<HowToUseBurpSuite />} />
+            <Route path="/blogs/What is owasp top 10" element={<OWASPTop10 />} />
           </Routes>
+
         </div>
       </div>
     </Router>

@@ -15,6 +15,7 @@ const BlogCard = ({ img, title }) => {
     >
       <div className="w-full">
         <img src={img} alt="An error ocurred"></img>
+        
       </div>
       <hr className="pt-2"></hr>
       <h2 className="font-bold md:text-base sm:text-xs">{title}</h2>

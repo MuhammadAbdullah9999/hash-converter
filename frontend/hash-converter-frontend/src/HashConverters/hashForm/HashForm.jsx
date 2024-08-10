@@ -12,7 +12,7 @@ function HashForm({ hashType, hashTitle }) {
   const handleHash = async () => {
     setLoading(true);
     try {
-      const response = await axios.post(`https://hash-converter-backend.onrender.com/hash`, {
+      const response = await axios.post(`http://localhost:5000/hash`, {
         inputText,
         hashType,
       });

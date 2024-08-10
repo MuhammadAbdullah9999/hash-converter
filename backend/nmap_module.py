@@ -12,6 +12,7 @@ def scan_target(target):
     try:
         nm = nmap.PortScanner()
         # Scan common ports with a faster timing template
+        
         nm.scan(target, arguments='-T4 -F')
         scan_data = []
         for host in nm.all_hosts():

@@ -13,7 +13,7 @@ function NetworkScanner() {
     try {
       const cleanedInput = inputText.replace(/^https?:\/\//, "");
       setHostname(cleanedInput);
-      const response = await axios.post(`https://hash-converter-backend.onrender.com/scan`, {
+      const response = await axios.post(`http://localhost:5000/scan`, {
         target: cleanedInput,
       });
       const { ip, scanData } = response.data;
